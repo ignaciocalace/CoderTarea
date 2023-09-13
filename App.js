@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { useState } from "react";
+import { Details, Home, Products } from "./src/screens";
+import { useFonts } from "expo-font";
+import fonts from "./src/global/fonts.js";
+import { SafeAreaView } from "react-native";
+import styles from "./App.style.js";
 export default function App() {
+  const [fontsLoaded] = useFonts(fonts);
+  const [categorySelected, setCategorySelected] = useState("");
+  const [productSelected, setProductSelected] = useState("");
+
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      {productSelected ? (
+        <Details
+          product={productSelected}
+          setProductSelected={setProductSelected}
+          setCategorySelected={setCategorySelected}
+        />
+      ) : categorySelected ? (
+        <Products
+          category={categorySelected}
+          setProductSelected={setProductSelected}
+          setCategorySelected={setCategorySelected}
+        />
+      ) : (
+        <Home setCategorySelected={setCategorySelected} />
+      )}
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
