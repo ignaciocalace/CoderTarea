@@ -1,17 +1,22 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../constants/colors.js";
 
 export default styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.primary,
-    paddingVertical: 15,
+    backgroundColor: "#fff",
     width: "100%",
-    alignItems: "center",
+    flexDirection: "row",
+    alignItems: "baseline",
+    justifyContent: "start",
+  },
+  button: {
+    paddingLeft: 10,
     justifyContent: "center",
+    alignItems: "center",
   },
   title: {
     fontSize: 40,
+    paddingLeft: 15,
     fontFamily: "KanitMediumItalic",
-    color: "white",
+    color: "black",
   },
 });

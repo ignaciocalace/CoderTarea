@@ -3,9 +3,11 @@ import { Pressable, Text, TouchableOpacity } from "react-native";
 import { Card } from "../../../../components";
 import CategoryItemStyles from "./CategoryItem.styles.js";
 
-const CategoryItem = ({ category, setCategorySelected }) => {
+const CategoryItem = ({ category, navigation }) => {
   return (
-    <TouchableOpacity onPress={() => setCategorySelected(category)}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Products", { category })}
+    >
       <Card style={CategoryItemStyles.cardContainer}>
         <Text style={styles.text}>{category}</Text>
       </Card>

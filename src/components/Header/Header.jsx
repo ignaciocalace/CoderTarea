@@ -1,10 +1,21 @@
-import { Text, View } from "react-native";
+import { Text, View, Platform, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./Header.style";
+import { Ionicons } from "@expo/vector-icons";
 
-const Header = ({ title }) => {
+const Header = ({ title, navigation, route }) => {
+  const backButtonIcon =
+    Platform.OS === "ios" ? "chevron-back-outline" : "arrow-back";
   return (
     <View style={styles.container}>
+      {route.name !== "Home" && route.name !== "Profile" && (
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name={backButtonIcon} size={24} color="black" />
+        </TouchableOpacity>
+      )}
       <Text style={styles.title}>{title}</Text>
     </View>
   );

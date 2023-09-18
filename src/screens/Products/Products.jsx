@@ -1,18 +1,12 @@
-import {
-  FlatList,
-  Pressable,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 import React, { useMemo, useState } from "react";
 import allProducts from "../../data/products";
 import styles from "./Products.style.js";
 import { Header, SearchInput } from "../../components";
 
-const Products = ({ category, setProductSelected, setCategorySelected }) => {
+const Products = ({ navigation, route }) => {
   const [keyWord, setKeyWord] = useState("");
-
+  const { category } = route.params;
   const arrProducts = useMemo(() => {
     const filteredProducts = allProducts.filter((product) => {
       const lowerCaseTitle = product.title.toLowerCase();
@@ -27,29 +21,20 @@ const Products = ({ category, setProductSelected, setCategorySelected }) => {
 
   return (
     <View style={styles.container}>
-      <Header title={category} />
       <SearchInput onSearch={setKeyWord} />
       <View style={styles.listContainer}>
         <FlatList
           data={arrProducts}
           renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => setProductSelected(item)}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Details", { product: item })}
+            >
               <Text style={styles.textItem}>{item.title}</Text>
               <View style={styles.underline} />
             </TouchableOpacity>
           )}
           keyExtractor={(item) => item.id}
         />
-      </View>
-      <View style={styles.buttonsNav}>
-        <Pressable
-          onPress={() => {
-            setCategorySelected(null);
-          }}
-          style={[styles.button, styles.homeButton]}
-        >
-          <Text style={styles.buttonText}>Home</Text>
-        </Pressable>
       </View>
     </View>
   );
