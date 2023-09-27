@@ -71,4 +71,5 @@ export default styles = StyleSheet.create({
   buttonText: {
     color: colors.quaternary,
   },
+  heartIcon: { alignItems: "flex-end" },
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { Pressable, Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 import { Card } from "../../../../components";
 import CategoryItemStyles from "./CategoryItem.styles.js";
 

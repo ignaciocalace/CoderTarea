@@ -6,9 +6,10 @@ import { Ionicons } from "@expo/vector-icons";
 const Header = ({ title, navigation, route }) => {
   const backButtonIcon =
     Platform.OS === "ios" ? "chevron-back-outline" : "arrow-back";
+  const excludedRoutes = ["Home", "Profile", "WishList"];
   return (
     <View style={styles.container}>
-      {route.name !== "Home" && route.name !== "Profile" && (
+      {!excludedRoutes.includes(route.name) && (
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.goBack()}

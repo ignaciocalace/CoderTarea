@@ -1,4 +1,7 @@
-import Home from "./Home/Home.jsx";
-import Products from "./Products/Products.jsx";
 import Details from "./Details/Details.jsx";
-export { Home, Products, Details };
+import Home from "./Home/Home.jsx";
+import ProductsList from "./ProductsList/ProductsList.jsx";
+import Profile from "./Profile/Profile.jsx";
+import WishList from "./WishList/WishList.jsx";
+
+export { Home, ProductsList, Details, Profile, WishList };
