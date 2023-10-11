@@ -1,21 +1,13 @@
 import { StyleSheet, Dimensions } from "react-native";
-import { colors } from "../../constants/colors.js";
 
 const windowWidth = Dimensions.get("window").width;
-const windowHeight = Dimensions.get("window").height;
 
 export default styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
   },
-  image: {
-    width: windowWidth * 0.8,
-    height: windowHeight * 0.4,
-    marginVertical: 15,
-    borderRadius: 10,
-  },
+
   infoContainer: {
     width: windowWidth * 0.9,
     padding: 15,
@@ -31,45 +23,42 @@ export default styles = StyleSheet.create({
     shadowRadius: 3,
     elevation: 3,
   },
+
+  titleContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    marginBottom: 10,
+  },
+
   title: {
     fontSize: 28,
     fontFamily: "KanitLightItalic",
-    textAlign: "center",
-    marginBottom: 10,
   },
+
+  icon: {
+    marginLeft: 10,
+  },
+
   description: {
     fontSize: 16,
     fontFamily: "KanitLight",
     marginBottom: 10,
   },
-  price: {
-    fontSize: 24,
-    fontFamily: "KanitMediumItalic",
-    alignSelf: "center",
+
+  exerciseContainer: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+    paddingVertical: 5,
   },
-  buttonsNav: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    width: "100%",
-    paddingHorizontal: 10,
-    marginVertical: 10,
+
+  exerciseName: {
+    fontWeight: "bold",
+    fontSize: 18,
   },
-  button: {
-    padding: 10,
-    borderRadius: 5,
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
-    marginHorizontal: 5,
+
+  exerciseDetail: {
+    marginTop: 5,
   },
-  backButton: {
-    backgroundColor: "#337CCF",
-  },
-  homeButton: {
-    backgroundColor: "#016A70",
-  },
-  buttonText: {
-    color: colors.quaternary,
-  },
-  heartIcon: { alignItems: "flex-end" },
 });

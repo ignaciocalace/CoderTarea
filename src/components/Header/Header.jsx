@@ -1,12 +1,19 @@
-import { Text, View, Platform, TouchableOpacity } from "react-native";
 import React from "react";
 import styles from "./Header.style";
 import { Ionicons } from "@expo/vector-icons";
+import { Text, View, Platform, TouchableOpacity } from "react-native";
 
-const Header = ({ title, navigation, route }) => {
+const Header = ({ title = "myRoutine", navigation, route }) => {
   const backButtonIcon =
     Platform.OS === "ios" ? "chevron-back-outline" : "arrow-back";
-  const excludedRoutes = ["Home", "Profile", "WishList"];
+  const excludedRoutes = [
+    "myRoutine",
+    "Home",
+    "Profile",
+    "MyRoutines",
+    "Login",
+    "SignUp",
+  ];
   return (
     <View style={styles.container}>
       {!excludedRoutes.includes(route.name) && (

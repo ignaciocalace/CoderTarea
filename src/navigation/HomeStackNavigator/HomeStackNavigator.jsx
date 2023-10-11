@@ -1,7 +1,7 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Home, Details, ProductsList } from "../../screens";
 import { View } from "react-native";
 import { Header } from "../../components/index.js";
+import { Home, Details, RoutinesList } from "../../screens";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const Stack = createNativeStackNavigator();
 const HomeStackNavigator = () => {
@@ -18,7 +18,7 @@ const HomeStackNavigator = () => {
       })}
     >
       <Stack.Screen name="Home" component={Home} />
-      <Stack.Screen name="Products" component={ProductsList} />
+      <Stack.Screen name="Routines" component={RoutinesList} />
       <Stack.Screen name="Details" component={Details} />
     </Stack.Navigator>
   );

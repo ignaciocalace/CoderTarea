@@ -1,10 +1,11 @@
-import { useFonts } from "expo-font";
-import fonts from "./src/global/fonts.js";
-import { SafeAreaView } from "react-native";
 import styles from "./App.style.js";
-import MainTabNavigator from "./src/navigation/MainTabNavigator/MainTabNavigator.jsx";
+import { useFonts } from "expo-font";
 import { Provider } from "react-redux";
 import store from "./src/store/index.js";
+import fonts from "./src/global/fonts.js";
+import { SafeAreaView } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import MainNavigator from "./src/navigation/MainNavigator/MainNavigator.jsx";
 export default function App() {
   const [fontsLoaded] = useFonts(fonts);
 
@@ -15,7 +16,9 @@ export default function App() {
   return (
     <Provider store={store}>
       <SafeAreaView style={styles.container}>
-        <MainTabNavigator />
+        <NavigationContainer>
+          <MainNavigator />
+        </NavigationContainer>
       </SafeAreaView>
     </Provider>
   );
