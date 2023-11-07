@@ -1,19 +1,32 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { userApi } from "../store/services/userApi.js";
+import { authApi } from "../store/services/authApi.js";
+import authSlice from "../store/features/authSlice.js";
+import userSlice from "../store/features/userSlice.js";
+import { myRoutinesApi } from "./services/myRoutinesApi.js";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
-import { workoutApi } from "../services/workoutsApi.js";
-import myRoutinesSlice from "../features/myRoutines/myRoutinesSlice.js";
-import { authApi } from "../services/authApi.js";
-import authSlice from "../features/auth/authSlice.js";
+import myRoutinesSlice from "../store/features/myRoutinesSlice.js";
+import currentTrainingSlice from "./features/currentTrainingSlice.js";
+import { currentTrainingApi } from "./services/currentTrainingApi.js";
 
 const store = configureStore({
   reducer: {
-    myroutines: myRoutinesSlice,
     auth: authSlice,
-    [workoutApi.reducerPath]: workoutApi.reducer,
+    user: userSlice,
+    myRoutines: myRoutinesSlice,
+    currentTraining: currentTrainingSlice,
     [authApi.reducerPath]: authApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
+    [myRoutinesApi.reducerPath]: myRoutinesApi.reducer,
+    [currentTrainingApi.reducerPath]: currentTrainingApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(workoutApi.middleware, authApi.middleware),
+    getDefaultMiddleware().concat(
+      myRoutinesApi.middleware,
+      authApi.middleware,
+      userApi.middleware,
+      currentTrainingApi.middleware
+    ),
 });
 setupListeners(store.dispatch);
 

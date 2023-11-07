@@ -7,14 +7,28 @@ export default styles = StyleSheet.create({
   textItem: {
     fontSize: 18,
     marginLeft: 5,
-    fontFamily: "KanitLightItalic",
-    marginBottom: 5,
-  },
 
-  underline: {
-    borderBottomColor: colors.tertiary,
-    borderBottomWidth: 0.9,
-    width: "80%",
+    marginTop: 10,
+    fontFamily: "KanitLightItalic",
+    alignSelf: "center",
+  },
+  squareItem: {
+    flex: 0.5,
+    aspectRatio: 1,
+    margin: 5,
+    backgroundColor: "#F0F0F0",
+
+    borderRadius: 10,
+  },
+  exercisesContainer: {
+    marginTop: 10,
+  },
+  exerciseText: {
+    marginHorizontal: 10,
+    fontSize: 15,
+    color: "grey",
+    flexShrink: 1,
+    width: "90%",
   },
   buttonsNav: {
     flexDirection: "row",

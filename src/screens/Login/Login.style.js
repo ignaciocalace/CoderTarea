@@ -1,4 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native";
+import { colors } from "../../constants/colors.js";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -7,9 +8,12 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
-
+  image: {
+    width: windowWidth * 0.55,
+    height: windowWidth * 0.55,
+  },
   title: {
     fontSize: 28,
     fontFamily: "KanitLightItalic",
@@ -55,21 +59,18 @@ export default styles = StyleSheet.create({
     fontFamily: "KanitMediumItalic",
   },
   signUpText: {
-    marginTop: 20,
+    marginTop: 10,
     color: "#333",
     fontSize: 18,
     fontFamily: "KanitLight",
   },
 
   signUpButton: {
-    alignItems: "center",
+    marginTop: 10,
+    backgroundColor: "#016A70",
+    padding: 12,
     borderRadius: 5,
-    borderBottomColor: "#ccc",
-    borderBottomWidth: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    marginVertical: 10,
-    backgroundColor: "#f5f5f5",
+    alignItems: "center",
   },
 
   signUpButtonText: {
@@ -77,5 +78,26 @@ export default styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     fontFamily: "KanitItalic",
+  },
+  buttonContainer: {
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  customButton: {
+    width: "80%",
+    paddingVertical: 10,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  buttonText: {
+    color: "white",
+    fontFamily: "KanitMedium",
+    fontSize: 16,
+  },
+  buttonCreate: {
+    backgroundColor: colors.primary,
   },
 });

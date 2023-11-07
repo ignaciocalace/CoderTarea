@@ -22,7 +22,7 @@ const SearchInput = ({ onSearch }) => {
         style={styles.input}
         value={value}
         onChangeText={handleChange}
-        placeholder="Search"
+        placeholder="Buscar Rutina"
       />
       <View style={styles.iconContainer}>
         <Pressable onPress={clearInput} style={styles.icon}>

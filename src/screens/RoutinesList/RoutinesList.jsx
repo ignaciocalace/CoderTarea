@@ -1,20 +1,16 @@
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
-import React, { useMemo, useState } from "react";
 import styles from "./RoutinesList.style.js";
+import React, { useMemo, useState } from "react";
 import { SearchInput } from "../../components/index.js";
-import { useGetWorkoutsCategoryQuery } from "../../services/workoutsApi.js";
+import { FlatList, Text, TouchableOpacity, View } from "react-native";
 
 const RoutinesList = ({
   navigation,
-  route,
   routines = [],
+  defRoutines,
   showSearch = true,
 }) => {
   const [keyword, setkeyword] = useState("");
-  const { data, isLoading } = useGetWorkoutsCategoryQuery(
-    route.params?.category
-  );
-  const sourceData = routines.length ? routines : data;
+  const sourceData = routines.length ? routines : defRoutines;
 
   const filteredRoutines = useMemo(() => {
     if (sourceData) {
@@ -30,24 +26,35 @@ const RoutinesList = ({
     <View style={styles.container}>
       {showSearch && <SearchInput onSearch={setkeyword} />}
       <View style={styles.listContainer}>
-        {isLoading ? (
-          <Text>Loading...</Text>
-        ) : (
-          <FlatList
-            data={filteredRoutines}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                onPress={() =>
-                  navigation.navigate("Details", { routine: item })
-                }
-              >
-                <Text style={styles.textItem}>{item.routineName}</Text>
-                <View style={styles.underline} />
-              </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item.id.toString()}
-          />
-        )}
+        <FlatList
+          data={filteredRoutines}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={styles.squareItem}
+              onPress={() =>
+                navigation.navigate("Details", {
+                  routine: item,
+                })
+              }
+            >
+              <Text style={styles.textItem}>{item.routineName}</Text>
+              <View style={styles.exercisesContainer}>
+                {item.exercises.map((exercise, index) => (
+                  <Text
+                    key={index}
+                    style={styles.exerciseText}
+                    numberOfLines={1}
+                    ellipsizeMode="tail"
+                  >
+                    • {exercise.name}
+                  </Text>
+                ))}
+              </View>
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item) => item.id.toString()}
+          numColumns={2}
+        />
       </View>
     </View>
   );

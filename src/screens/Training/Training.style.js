@@ -8,9 +8,18 @@ export default styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-
+  containerCentered: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: {
+    width: windowWidth * 0.7,
+    height: windowWidth * 0.7,
+  },
   infoContainer: {
     width: windowWidth * 0.9,
+    alignContent: "center",
+    alignItems: "center",
     padding: 15,
     borderRadius: 10,
     marginVertical: 10,
@@ -52,6 +61,7 @@ export default styles = StyleSheet.create({
     borderBottomWidth: 0.7,
     borderBottomColor: "#ccc",
     paddingVertical: 5,
+    flexDirection: "row",
   },
 
   exerciseName: {
@@ -82,11 +92,28 @@ export default styles = StyleSheet.create({
   modalText: {
     fontSize: 18,
     fontFamily: "KanitItalic",
+
     marginBottom: 10,
   },
   modalButtons: {
     flexDirection: "row",
     justifyContent: "center",
+  },
+  cancelButton: {
+    fontSize: 16,
+    marginRight: 20,
+    color: "blue",
+  },
+  deleteButton: {
+    fontSize: 16,
+    color: "red",
+  },
+  exerciseInfoContainer: {
+    flex: 1,
+  },
+
+  checkBoxContainer: {
+    alignSelf: "center",
   },
   cancelButton: {
     width: "auto",
@@ -96,16 +123,15 @@ export default styles = StyleSheet.create({
 
     backgroundColor: colors.secondary,
   },
-  deleteButton: {
+  FinishButton: {
     width: "auto",
     fontSize: 16,
     paddingHorizontal: 10,
 
-    backgroundColor: "red",
+    backgroundColor: colors.primary,
   },
   buttonContainer: {
     width: "100%",
-
     justifyContent: "center",
     alignItems: "center",
   },
